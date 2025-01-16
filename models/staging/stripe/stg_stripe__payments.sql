@@ -1,0 +1,1 @@
+select orderid, amount from dbt-tutorial.stripe.payment WHERE status = "success"
