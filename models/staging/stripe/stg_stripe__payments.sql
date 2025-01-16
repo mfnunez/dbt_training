@@ -1,1 +1,1 @@
-select orderid, amount from dbt-tutorial.stripe.payment WHERE status = "success"
+select orderid as order_id, amount from dbt-tutorial.stripe.payment WHERE status = "success"
