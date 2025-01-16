@@ -3,12 +3,12 @@ with orders as (
     from {{ref('stg_jaffle_shop__orders')}}
 ),
 
-with payments as(
+payments as(
     select *
     from {{ref('stg_stripe__payments')}}
 ),
 
-with final(
+final as(
     select orders.order_id, orders.customer_id, SUM(payments.payment) as amount
     from orders
         left join payments using (order_id)
