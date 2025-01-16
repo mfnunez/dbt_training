@@ -1,1 +1,3 @@
-select orderid as order_id, amount from dbt-tutorial.stripe.payment WHERE status = "success"
+select orderid as order_id, amount 
+from {{ source('jaffle_shop', 'payments') }}
+where status = "success"
