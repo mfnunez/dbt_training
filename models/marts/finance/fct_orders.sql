@@ -9,7 +9,7 @@ payments as(
 ),
 
 final as(
-    select orders.customer_id, SUM(amount) as livetime_value
+    select orders.customer_id, SUM(amount/100) as livetime_value
     from orders
         left join payments using (order_id)
     group by 1
