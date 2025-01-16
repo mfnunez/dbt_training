@@ -1,3 +1,3 @@
 select orderid as order_id, amount 
-from {{ source('stripe', 'payments') }}
+from {{ source('stripe', 'payment') }}
 where status = "success"
