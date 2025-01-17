@@ -6,7 +6,10 @@ sources:
     tables:
       -name : customers
       -name : orders
-      -name : payment
+
+  - name: stripe
+      tables:
+        - name: payments
 models:
   - name: stg_jaffle_shop__customers
     columns: 
