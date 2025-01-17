@@ -4,34 +4,10 @@ sources:
     database: dbt-tutorial
     schema: jaffle_shop
     tables:
-      -name : customers
-      -name : orders
+      - name : customers
+      - name : orders
 
   - name: stripe
-      tables:
-        - name: payments
-models:
-  - name: stg_jaffle_shop__customers
-    columns: 
-      - name: customer_id
-        tests:
-          - unique
-          - not_null
-  - name: stg_jaffle_shop__orders
-    columns:
-      - name: order_id
-        tests:
-          - unique
-          - not_null
-      - name: status
-        tests:
-          - relationships:
-              field: customer_id
-              to: ref('')
-          - accepted_values:
-              values:
-                - completed
-                - shipped
-                - returned
-                - return_pending
-                - placed
+    database: dbt-tutorial
+    tables:
+       - name: payments
