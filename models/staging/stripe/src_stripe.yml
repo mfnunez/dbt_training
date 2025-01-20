@@ -19,7 +19,9 @@ sources:
                 description: Payment status (fail or success)
                 tests :
                   - accepted_values:
-                    values: ['success','fail']
+                    values:
+                      - success
+                      - fail
               - name: amount
                 description: Amount of payment in cents
               - name: created
