@@ -9,11 +9,14 @@ sources:
         description: Raw customer data.
         columns:
           - name: customer_id
-            description : id is the primary key for customers data.
+            description : Id is the primary key for customers data.
             tests:
               - unique
               - not_null
-
+          - name: last_name
+            description : Is Last name of customer
+          - name: first_name
+            description : Is First name of customer
       - name : orders
         description : Raw orders data.
         columns:
@@ -22,12 +25,11 @@ sources:
             tests:
               - unique
               - not_null
+          - name: customer_id
+            description: Is customer Id of customer that placed the order
+          - name: order_date
+            description: Is order date in format YYYY-MM-DD
         loaded_at_field: _etl_loaded_at
         freshness:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
-
-  - name: stripe
-    database: dbt-tutorial
-    tables:
-       - name: payments
