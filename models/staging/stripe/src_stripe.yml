@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: stripe
+    database: dbt-tutorial
+    description : Raw data for payments fromt Stripe app (source in stripe)
+    schema: stripe
+    tables:
+          - name: payment
+            description: Raw data for stripe payment app (in model)
+            columns:
+              - name: id
+                description: Id of the table
+              - name: orderid
+                description: Id of the order in the payment db
+              - name: paymentmethod
+                description: '{{doc("paymentmethod")}}'
+              - name: status
+                description: Payment status (fail or success)
+              - name: amount
+                description: Amount of payment in cents
+              - name: created
+                description: Date of creation in format YYYY-MM-DD.
+              - name: _batched_at
+                description: Date of record for line in DB format YYYY-MM-DDTHH:MM:SS.
+            loaded_at_field: _batched_at
+            freshness:
+              warn_after: {count: 12, period: hour}
+              error_after: {count: 24, period: hour}
